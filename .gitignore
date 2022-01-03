@@ -1,0 +1,20 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/building blocks/BaseProject.Core/bin/Debug/net5.0
+/src/building blocks/BaseProject.Core/obj/Debug/net5.0
+/src/building blocks/BaseProject.Core/obj
+/src/services/BaseProject.Application/bin/Debug/net5.0
+/src/services/BaseProject.Application/obj
+/src/services/BaseProject.CrossCutting/bin/Debug/net5.0
+/src/services/BaseProject.CrossCutting/obj/Debug/net5.0
+/src/services/BaseProject.CrossCutting/obj
+/src/services/BaseProject.Data/bin/Debug/net5.0
+/src/services/BaseProject.Data/Migrations
+/src/services/BaseProject.Data/obj
+/src/services/BaseProject.Domain/bin/Debug/net5.0
+/src/services/BaseProject.Domain/obj/Debug/net5.0
+/src/services/BaseProject.Domain/obj
+/src/services/BaseProject.Service/bin/Debug/net5.0
+/src/services/BaseProject.Service/obj

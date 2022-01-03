@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\BaseProject.Core\BaseProject.Core.csproj" />
+    <ProjectReference Include="..\BaseProject.Data\BaseProject.Data.csproj" />
+    <ProjectReference Include="..\BaseProject.Domain\BaseProject.Domain.csproj" />
+    <ProjectReference Include="..\BaseProject.Service\BaseProject.Service.csproj" />
+  </ItemGroup>
+
+</Project>
