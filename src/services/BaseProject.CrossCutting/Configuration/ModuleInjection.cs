@@ -11,8 +11,10 @@ namespace BaseProject.CrossCutting.Configuration
         {
             services.ResolveDependenciesCore();
             services.AddJwtConfiguration(configuration);
+
             services.AddUsuarioDependencyInjection();
             services.AddClienteDependencyInjection();
+            services.AddProdutoDependencyInjection();
         }
     }
 }

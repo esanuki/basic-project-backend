@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BaseProject.CrossCutting.Mapper.Cliente;
+using BaseProject.CrossCutting.Mapper.Produto;
 using BaseProject.CrossCutting.Mapper.Usuario;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +15,7 @@ namespace BaseProject.CrossCutting.Mapper
                 cfg.AddProfile(new UsuarioMapper());
                 cfg.AddProfile(new ClienteMapper());
                 cfg.AddProfile(new EnderecoMapper());
+                cfg.AddProfile(new ProdutoMapper());
             });
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
