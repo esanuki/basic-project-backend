@@ -5,7 +5,7 @@ using BaseProject.Service.Login;
 using BaseProject.Service.Usuario;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BaseProject.CrossCutting.Configuration.DependencyInjection
+namespace BaseProject.CrossCutting.IoC.DependencyInjection
 {
     public static class UsuarioDependencyInjection
     {

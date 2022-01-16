@@ -10,7 +10,8 @@ namespace BaseProject.Domain.Models
         public string Nome { get; set; }
         public override bool EhValido()
         {
-            return new UsuarioValidation().Validate(this).IsValid;
+            ValidationResult = new UsuarioValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

@@ -26,14 +26,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _produtoService.ObterTodos<ProdutoDto>());
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _produtoService.ObterTodos<ProdutoDto>());
         }
 
         [HttpGet]
@@ -42,14 +35,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _produtoService.Selecionar<ProdutoDto>(id));
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _produtoService.Selecionar<ProdutoDto>(id));
         }
 
         [HttpPost]
@@ -57,16 +43,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _produtoService.Adicionar(produto);
+            await _produtoService.Adicionar(produto);
 
-                return CustomResponse("Produto adicionado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Produto adicionado com sucesso.");
         }
 
         [HttpPut]
@@ -74,16 +53,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _produtoService.Alterar<ProdutoViewModel>(produto);
+            await _produtoService.Alterar<ProdutoViewModel>(produto);
 
-                return CustomResponse("Produto alterado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Produto alterado com sucesso.");
         }
 
         [HttpDelete]
@@ -91,16 +63,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _produtoService.Remover(id);
+            await _produtoService.Remover(id);
 
-                return CustomResponse("Produto excluido com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Produto excluido com sucesso.");
         }
     }
 }

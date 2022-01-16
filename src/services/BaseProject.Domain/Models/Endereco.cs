@@ -18,7 +18,8 @@ namespace BaseProject.Domain.Models
 
         public override bool EhValido()
         {
-            return new EnderecoValidation().Validate(this).IsValid;
+            ValidationResult = new EnderecoValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

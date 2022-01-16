@@ -27,15 +27,8 @@ namespace BaseProject.Application.Controllers
         public async Task<ActionResult> Login([FromBody] LoginViewModel login)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
-
-            try
-            {
-                return CustomResponse(await _loginService.ObterPorLogin(login));
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            
+            return CustomResponse(await _loginService.ObterPorLogin(login));
         }
 
     }

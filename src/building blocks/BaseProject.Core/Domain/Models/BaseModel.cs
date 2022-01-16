@@ -7,7 +7,7 @@ namespace BaseProject.Core.Domain.Models
     {
         public decimal Id { get; set; }
         [NotMapped]
-        public ValidationResult ValidationResult { get; private set; }
+        public ValidationResult ValidationResult { get; protected set; }
 
         public abstract bool EhValido();
     }

@@ -1,9 +1,9 @@
 ﻿using BaseProject.Core.Application.Configuration;
-using BaseProject.CrossCutting.Configuration.DependencyInjection;
+using BaseProject.CrossCutting.IoC.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BaseProject.CrossCutting.Configuration
+namespace BaseProject.CrossCutting.IoC
 {
     public static class ModuleInjection
     {
@@ -15,6 +15,7 @@ namespace BaseProject.CrossCutting.Configuration
             services.AddUsuarioDependencyInjection();
             services.AddClienteDependencyInjection();
             services.AddProdutoDependencyInjection();
+            services.AddVendaDependencyInjection();
         }
     }
 }

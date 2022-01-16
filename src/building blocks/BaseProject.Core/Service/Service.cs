@@ -45,6 +45,13 @@ namespace BaseProject.Core.Service
         public virtual async Task Alterar<ViewModel>(ViewModel viewModel)
         {
             var entity = _mapper.Map<T>(viewModel);
+
+            if (!entity.EhValido())
+            {
+                entity.ValidationResult.Errors.ForEach(e => _notificador.Handle(new Notificacao(e.ErrorMessage)));
+                return;
+            }
+
             await _repository.Alterar(entity);
         }
 

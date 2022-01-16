@@ -27,14 +27,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _clienteService.ObterTodos<ClienteDto>());
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _clienteService.ObterTodos<ClienteDto>());
         }
 
         [HttpGet]
@@ -43,14 +36,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _clienteService.SelecionarComEndereco(id));
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _clienteService.SelecionarComEndereco(id));
         }
 
         [HttpPost]
@@ -58,16 +44,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _clienteService.Adicionar(cliente);
+            await _clienteService.Adicionar(cliente);
 
-                return CustomResponse("Cliente adicionado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Cliente adicionado com sucesso.");
         }
 
         [HttpPut]
@@ -75,16 +54,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _clienteService.Alterar<ClienteUpdateViewModel>(cliente);
+            await _clienteService.Alterar<ClienteUpdateViewModel>(cliente);
 
-                return CustomResponse("Cliente alterado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Cliente alterado com sucesso.");
         }
 
         [HttpDelete]
@@ -92,16 +64,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _clienteService.Remover(id);
+            await _clienteService.Remover(id);
 
-                return CustomResponse("Cliente excluido com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Cliente excluido com sucesso.");
         }
     }
 }

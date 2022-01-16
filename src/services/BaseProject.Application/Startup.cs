@@ -1,4 +1,5 @@
-using BaseProject.CrossCutting.Configuration;
+using BaseProject.Core.Middleware;
+using BaseProject.CrossCutting.IoC;
 using BaseProject.CrossCutting.Mapper;
 using BaseProject.Data.Context;
 using Microsoft.AspNetCore.Builder;
@@ -67,6 +68,8 @@ namespace BaseProject.Application
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

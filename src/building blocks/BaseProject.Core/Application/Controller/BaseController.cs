@@ -9,7 +9,7 @@ namespace BaseProject.Core.Application.Controller
     [ApiController]
     public class BaseController : ControllerBase
     {
-        private INotificador _notificador;
+        protected INotificador _notificador;
 
         public BaseController(INotificador notificador)
         {
@@ -35,7 +35,7 @@ namespace BaseProject.Core.Application.Controller
             return BadRequest(new
             {
                 sucess = false,
-                error = _notificador.ObterNotificacoes().Select(e => e.Mensagem)
+                errors = _notificador.ObterNotificacoes().Select(e => e.Mensagem)
             });
         }
 

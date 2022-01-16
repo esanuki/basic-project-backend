@@ -2,12 +2,8 @@
 using BaseProject.Core.Domain.Interfaces;
 using BaseProject.Domain.Interfaces.Service;
 using BaseProject.Domain.Interop.Dtos.Usuario;
-using BaseProject.Domain.Interop.ViewModels;
 using BaseProject.Domain.Interop.ViewModels.Usuario;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace BaseProject.Application.Controllers
@@ -28,13 +24,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _service.ObterTodos<UsuarioDto>());
-            } catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _service.ObterTodos<UsuarioDto>());
         }
 
         [HttpGet]
@@ -43,14 +33,7 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                return CustomResponse(await _service.Selecionar<UsuarioDto>(id));
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse(await _service.Selecionar<UsuarioDto>(id));
         }
 
         [HttpPost]
@@ -58,16 +41,10 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _service.Adicionar(usuario);
+            await _service.Adicionar(usuario);
 
-                return CustomResponse("Usuário adicionado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Usuário adicionado com sucesso.");
+
         }
 
         [HttpPut]
@@ -75,16 +52,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _service.Alterar<UsuarioUpdateViewModel>(usuario);
+            await _service.Alterar<UsuarioUpdateViewModel>(usuario);
 
-                return CustomResponse("Usuário alterado com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Usuário alterado com sucesso.");
         }
 
         [HttpDelete]
@@ -92,16 +62,9 @@ namespace BaseProject.Application.Controllers
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
-            try
-            {
-                await _service.Remover(id);
+            await _service.Remover(id);
 
-                return CustomResponse("Usuário excluido com sucesso.");
-            }
-            catch (ArgumentException e)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
-            }
+            return CustomResponse("Usuário excluido com sucesso.");
         }
 
     }

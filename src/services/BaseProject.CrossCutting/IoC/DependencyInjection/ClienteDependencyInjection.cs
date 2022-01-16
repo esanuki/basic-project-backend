@@ -4,7 +4,7 @@ using BaseProject.Domain.Interfaces.Service;
 using BaseProject.Service.Cliente;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BaseProject.CrossCutting.Configuration.DependencyInjection
+namespace BaseProject.CrossCutting.IoC.DependencyInjection
 {
     public static class ClienteDependencyInjection
     {
