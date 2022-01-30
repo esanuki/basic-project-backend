@@ -11,9 +11,6 @@ namespace BaseProject.Domain.Validations
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
                 .Length(3, 60).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");
 
-            RuleFor(e => e.Numero)
-                .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido");
-
             RuleFor(e => e.Cep)
                 .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
                 .Length(8, 8).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");

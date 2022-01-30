@@ -58,6 +58,7 @@ namespace BaseProject.Application.Controllers
         }
 
         [HttpDelete]
+        [Route("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
