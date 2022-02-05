@@ -2,6 +2,7 @@
 using BaseProject.Domain.Validations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BaseProject.Domain.Models
 {
@@ -14,18 +15,8 @@ namespace BaseProject.Domain.Models
         }
 
         public DateTime DataVenda { get; set; }
-        public decimal ValorTotal
-        {
-            get
-            {
-                decimal valor = 0;
-                foreach (var item in VendaItens)
-                {
-                    valor += item.ValorTotal;
-                }
-                return valor;
-            }
-        }
+
+        public decimal ValorTotal { get; set; }
         public decimal ClienteId { get; set; }
         public Cliente Cliente { get; set; }
 
@@ -35,6 +26,17 @@ namespace BaseProject.Domain.Models
         {
             ValidationResult = new VendaValidation().Validate(this);
             return ValidationResult.IsValid;
+        }
+
+        public void GetValorTotal()
+        {
+            decimal _valorTotal = 0;
+            foreach (var item in VendaItens)
+            {
+                _valorTotal += item.ValorTotal;
+            }
+
+            ValorTotal = _valorTotal;
         }
     }
 }

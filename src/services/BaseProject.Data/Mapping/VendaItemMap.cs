@@ -21,12 +21,12 @@ namespace BaseProject.Data.Mapping
                 .HasColumnName("Quantidade");
 
             builder.Property(vi => vi.ValorUnitario)
-                .HasColumnType("numeric(18,0)")
+                .HasColumnType("numeric(18,2)")
                 .HasColumnName("ValorUnitario");
 
             builder.Property(vi => vi.Desconto)
-                .HasColumnType("numeric(18,0)")
-                .HasColumnName("ValorUnitario");
+                .HasColumnType("numeric(18,2)")
+                .HasColumnName("Desconto");
 
             builder.Property(vi => vi.VendaId)
                 .HasColumnType("numeric(18,0)")
@@ -42,7 +42,8 @@ namespace BaseProject.Data.Mapping
 
             builder.HasOne(vi => vi.Venda)
                 .WithMany(v => v.VendaItens)
-                .HasForeignKey(vi => vi.VendaId);
+                .HasForeignKey(vi => vi.VendaId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

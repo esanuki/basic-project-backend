@@ -19,6 +19,11 @@ namespace BaseProject.Data.Mapping
                 .HasColumnType("datetime")
                 .HasColumnName("DataVenda");
 
+            builder.Property(v => v.ValorTotal)
+                .HasColumnType("decimal(18,2)")
+                .HasColumnName("ValorTotal");
+
+
             builder.Property(v => v.ClienteId)
                 .HasColumnType("numeric(18,0)")
                 .HasColumnName("ClienteId");

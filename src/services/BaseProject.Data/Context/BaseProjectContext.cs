@@ -16,7 +16,7 @@ namespace BaseProject.Data.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BaseProjectContext).Assembly);
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()).Where(e => !e.GetConstraintName().Contains("FK_VendaItem_Venda_VendaId")))
             {
                 relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
             }

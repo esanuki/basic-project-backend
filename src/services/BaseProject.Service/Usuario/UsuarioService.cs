@@ -5,7 +5,6 @@ using BaseProject.Core.Helpers;
 using BaseProject.Core.Service;
 using BaseProject.Domain.Interfaces.Repository;
 using BaseProject.Domain.Interfaces.Service;
-using BaseProject.Domain.Interop.ViewModels;
 using BaseProject.Domain.Interop.ViewModels.Usuario;
 using System.Threading.Tasks;
 
