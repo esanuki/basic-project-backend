@@ -9,7 +9,7 @@ namespace BaseProject.Domain.Interfaces.Service
 {
     public interface IVendaService : IService<Venda>
     {
-        Task<IEnumerable<VendaDto>> ObterTodos();
+        Task<IEnumerable<VendaListDto>> ObterTodos();
         Task<VendaDto> Selecionar(decimal id);
         Task Adicionar(VendaViewModel viewModel);
         Task Alterar(VendaViewModel viewModel);

@@ -5,7 +5,9 @@ using BaseProject.Domain.Interfaces.Repository;
 using BaseProject.Domain.Interfaces.Service;
 using BaseProject.Domain.Interop.Dtos.Venda;
 using BaseProject.Domain.Interop.ViewModels.Venda;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BaseProject.Service.Venda
@@ -32,15 +34,26 @@ namespace BaseProject.Service.Venda
 
         public async Task Alterar(VendaViewModel viewModel)
         {
-            var entity = _mapper.Map<Domain.Models.Venda>(viewModel);
-            entity.GetValorTotal();
+            try
+            {
+                var entity = _mapper.Map<Domain.Models.Venda>(viewModel);
+                entity.GetValorTotal();
 
-            await _vendaRepository.Alterar(entity);
+                var vendaItens = await _vendaRepository.ObterVendaItensPorVenda(entity.Id);
+                if (vendaItens.Count() > 0)
+                    await _vendaRepository.ExcluirVendaItens(vendaItens);
+
+                await _vendaRepository.Alterar(entity);
+            } catch(Exception e)
+            {
+                throw e;
+            }
+            
         }
 
-        public async Task<IEnumerable<VendaDto>> ObterTodos()
+        public async Task<IEnumerable<VendaListDto>> ObterTodos()
         {
-            return _mapper.Map<IEnumerable<VendaDto>>(await _vendaRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<VendaListDto>>(await _vendaRepository.ObterTodos());
         }
 
         public async Task<VendaDto> Selecionar(decimal id)

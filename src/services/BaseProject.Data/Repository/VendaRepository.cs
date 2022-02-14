@@ -48,5 +48,17 @@ namespace BaseProject.Data.Repository
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<VendaItem>> ObterVendaItensPorVenda(decimal id)
+        {
+            return await _context.Set<VendaItem>().Where(vi => vi.VendaId.Equals(id)).ToListAsync();
+        }
+
+        public async Task ExcluirVendaItens(IEnumerable<VendaItem> vendaItems)
+        {
+            _context.Set<VendaItem>().RemoveRange(vendaItems);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }
